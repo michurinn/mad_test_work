@@ -1,6 +1,19 @@
 # mad_test_work
 
-A new Flutter project.
+1. Используется пакет freezed для генерации дата-классов и методов fromJson и toJson.
+2. В качестве http клиента используется пакет Dio 
+3. Получение данных предусмотрено только из сети, впоследствии можно предусмотреть сохранение кэша в локальной БД
+4. Стейт-менеджмент выполнен с помощью BLoC 
+5. На экране отображения карты и точек координаты согласно Canvas.
+6. Для DI используется пакет Provider
+Скринкаст: 
+TODO-list:
+- Парсинг json в Isolate.
+- Размер точек на карте должен масштабироваться
+
+TODO-list:
+- Json parsing in Isolate.
+- The size of the points on the map should be scaled
 
 ## Getting Started
 
