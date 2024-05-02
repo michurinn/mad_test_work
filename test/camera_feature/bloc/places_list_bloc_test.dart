@@ -68,7 +68,8 @@ void main() {
       bloc.add(LoadPlaces());
     });
 
-    test('doesnt called placeNameFilter.filterPlaces if state is not Loaded',
+    test(
+        'doesnt called placeNameFilter.filterPlaces if state is not Loaded or Filtered',
         () async {
       // arrange
       when(placeNameFilter.filteredPlaces(any, any))
@@ -92,6 +93,34 @@ void main() {
       await untilCalled(placeNameFilter.filteredPlaces(any, any));
       // assert
       verify(placeNameFilter.filteredPlaces(any, any)).called(1);
+    });
+
+    test('keep original places after filter operations', () async {
+      final places = [
+        const Place(
+            title: 'Place 1', totalPoints: 0, remainingPoints: 0, points: []),
+        const Place(
+            title: 'Place 2', totalPoints: 0, remainingPoints: 0, points: [])
+      ];
+
+      final filteredPlaces = [
+        const Place(
+            title: 'Place 1', totalPoints: 0, remainingPoints: 0, points: [])
+      ];
+      // arrange
+      when(placeNameFilter.filteredPlaces(any, any))
+          .thenAnswer((_) => filteredPlaces);
+      final expected = [
+        Loaded(places: places),
+        Filtered(places: places, filteredPlaces: filteredPlaces),
+      ];
+
+      // assert
+      expectLater(bloc.stream, emitsInOrder(expected));
+
+      // act
+      bloc.emit(Loaded(places: places));
+      bloc.add(FilterPlaces('2'));
     });
   });
 }
