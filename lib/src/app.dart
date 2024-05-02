@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
                     child: PlacesListView(
                       freeSpaceController: FreeSpaceController(
                         freeSpaceService: FreeSpaceService(),
-                      ),
+                      )..checkFreeSpace(),
                     ),
                   ),
                 );
