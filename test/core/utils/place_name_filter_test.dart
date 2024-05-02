@@ -14,12 +14,12 @@ void main() {
       const Place(
           title: 'Place 1',
           totalPoints: 1,
-          points: [PhotoPoint(x: 1, y: 2)],
+          points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
           remainingPoints: 2),
       const Place(
           title: 'Place 2',
           totalPoints: 1,
-          points: [PhotoPoint(x: 1, y: 2)],
+          points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
           remainingPoints: 2),
     ];
 
@@ -35,22 +35,22 @@ void main() {
         const Place(
             title: 'Place 1',
             totalPoints: 1,
-            points: [PhotoPoint(x: 1, y: 2)],
+            points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
             remainingPoints: 2),
         const Place(
             title: 'Place 2',
             totalPoints: 1,
-            points: [PhotoPoint(x: 1, y: 2)],
+            points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
             remainingPoints: 2),
         const Place(
             title: 'PlacOther',
             totalPoints: 1,
-            points: [PhotoPoint(x: 1, y: 2)],
+            points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
             remainingPoints: 2),
         const Place(
             title: 'PlacAnother',
             totalPoints: 1,
-            points: [PhotoPoint(x: 1, y: 2)],
+            points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
             remainingPoints: 2),
       ];
 
@@ -60,12 +60,12 @@ void main() {
           const Place(
               title: 'Place 1',
               totalPoints: 1,
-              points: [PhotoPoint(x: 1, y: 2)],
+              points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
               remainingPoints: 2),
           const Place(
               title: 'Place 2',
               totalPoints: 1,
-              points: [PhotoPoint(x: 1, y: 2)],
+              points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
               remainingPoints: 2),
         ],
       );
@@ -76,12 +76,12 @@ void main() {
         const Place(
             title: 'Place 1',
             totalPoints: 1,
-            points: [PhotoPoint(x: 1, y: 2)],
+            points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
             remainingPoints: 2),
         const Place(
             title: 'Place 2',
             totalPoints: 1,
-            points: [PhotoPoint(x: 1, y: 2)],
+            points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
             remainingPoints: 2),
       ];
 
@@ -91,12 +91,12 @@ void main() {
           const Place(
               title: 'Place 1',
               totalPoints: 1,
-              points: [PhotoPoint(x: 1, y: 2)],
+              points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
               remainingPoints: 2),
           const Place(
               title: 'Place 2',
               totalPoints: 1,
-              points: [PhotoPoint(x: 1, y: 2)],
+              points: [PhotoPoint(x: 1, y: 2, status: 'incompleted')],
               remainingPoints: 2),
         ],
       );

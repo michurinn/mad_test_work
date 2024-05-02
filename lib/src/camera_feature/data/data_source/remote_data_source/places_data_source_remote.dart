@@ -12,7 +12,7 @@ class PlacesDataSourceRemote implements IPlacesDataSourceRemote {
 
   @override
   Future<List<PlaceModel>> getPlaces() async {
-    final response = await dioClient.get('/f5628f20.json');
+    final response = await dioClient.get('https://json-parser.com/f5628f20/4.json');
     final Completer<List<PlaceModel>> completer = Completer<List<PlaceModel>>();
     // TODO(me): add check for status code here
     if (response.statusCode == 200) {

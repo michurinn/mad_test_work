@@ -22,6 +22,7 @@ PhotoPoint _$PhotoPointFromJson(Map<String, dynamic> json) {
 mixin _$PhotoPoint {
   num get x => throw _privateConstructorUsedError;
   num get y => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $PhotoPointCopyWith<$Res> {
           PhotoPoint value, $Res Function(PhotoPoint) then) =
       _$PhotoPointCopyWithImpl<$Res, PhotoPoint>;
   @useResult
-  $Res call({num x, num y});
+  $Res call({num x, num y, String status});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$PhotoPointCopyWithImpl<$Res, $Val extends PhotoPoint>
   $Res call({
     Object? x = null,
     Object? y = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       x: null == x
@@ -63,6 +65,10 @@ class _$PhotoPointCopyWithImpl<$Res, $Val extends PhotoPoint>
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as num,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$PhotoPointImplCopyWith<$Res>
       __$$PhotoPointImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({num x, num y});
+  $Res call({num x, num y, String status});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$PhotoPointImplCopyWithImpl<$Res>
   $Res call({
     Object? x = null,
     Object? y = null,
+    Object? status = null,
   }) {
     return _then(_$PhotoPointImpl(
       x: null == x
@@ -101,14 +108,20 @@ class __$$PhotoPointImplCopyWithImpl<$Res>
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as num,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PhotoPointImpl implements _PhotoPoint {
-  const _$PhotoPointImpl({required this.x, required this.y});
+class _$PhotoPointImpl extends _PhotoPoint {
+  const _$PhotoPointImpl(
+      {required this.x, required this.y, required this.status})
+      : super._();
 
   factory _$PhotoPointImpl.fromJson(Map<String, dynamic> json) =>
       _$$PhotoPointImplFromJson(json);
@@ -117,10 +130,12 @@ class _$PhotoPointImpl implements _PhotoPoint {
   final num x;
   @override
   final num y;
+  @override
+  final String status;
 
   @override
   String toString() {
-    return 'PhotoPoint(x: $x, y: $y)';
+    return 'PhotoPoint(x: $x, y: $y, status: $status)';
   }
 
   @override
@@ -129,12 +144,13 @@ class _$PhotoPointImpl implements _PhotoPoint {
         (other.runtimeType == runtimeType &&
             other is _$PhotoPointImpl &&
             (identical(other.x, x) || other.x == x) &&
-            (identical(other.y, y) || other.y == y));
+            (identical(other.y, y) || other.y == y) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, x, y);
+  int get hashCode => Object.hash(runtimeType, x, y, status);
 
   @JsonKey(ignore: true)
   @override
@@ -150,9 +166,12 @@ class _$PhotoPointImpl implements _PhotoPoint {
   }
 }
 
-abstract class _PhotoPoint implements PhotoPoint {
-  const factory _PhotoPoint({required final num x, required final num y}) =
-      _$PhotoPointImpl;
+abstract class _PhotoPoint extends PhotoPoint {
+  const factory _PhotoPoint(
+      {required final num x,
+      required final num y,
+      required final String status}) = _$PhotoPointImpl;
+  const _PhotoPoint._() : super._();
 
   factory _PhotoPoint.fromJson(Map<String, dynamic> json) =
       _$PhotoPointImpl.fromJson;
@@ -161,6 +180,8 @@ abstract class _PhotoPoint implements PhotoPoint {
   num get x;
   @override
   num get y;
+  @override
+  String get status;
   @override
   @JsonKey(ignore: true)
   _$$PhotoPointImplCopyWith<_$PhotoPointImpl> get copyWith =>
