@@ -129,13 +129,14 @@ class __$$PlaceImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PlaceImpl implements _Place {
+class _$PlaceImpl extends _Place {
   const _$PlaceImpl(
       {required this.title,
       required this.totalPoints,
       required this.remainingPoints,
       required final List<PhotoPoint> points})
-      : _points = points;
+      : _points = points,
+        super._();
 
   @override
   final String title;
@@ -180,12 +181,13 @@ class _$PlaceImpl implements _Place {
       __$$PlaceImplCopyWithImpl<_$PlaceImpl>(this, _$identity);
 }
 
-abstract class _Place implements Place {
+abstract class _Place extends Place {
   const factory _Place(
       {required final String title,
       required final int totalPoints,
       required final int remainingPoints,
       required final List<PhotoPoint> points}) = _$PlaceImpl;
+  const _Place._() : super._();
 
   @override
   String get title;

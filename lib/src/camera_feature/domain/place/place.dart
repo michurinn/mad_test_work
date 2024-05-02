@@ -4,10 +4,13 @@ part 'place.freezed.dart';
 
 @freezed
 class Place with _$Place {
+  const Place._();
   const factory Place({
     required String title,
     required int totalPoints,
     required int remainingPoints,
     required List<PhotoPoint> points,
   }) = _Place;
+
+  double get remainingSpace => remainingPoints * 5;
 }
