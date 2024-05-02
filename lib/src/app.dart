@@ -13,13 +13,13 @@ import 'package:mad_test_work/src/camera_feature/data/repository/places_reposito
 import 'package:mad_test_work/src/camera_feature/domain/repository/places_repository_interface.dart';
 import 'package:mad_test_work/src/camera_feature/domain/use_cases/get_places_use_case.dart';
 import 'package:mad_test_work/src/camera_feature/presentation/bloc/places_list_bloc.dart';
+import 'package:mad_test_work/src/camera_feature/presentation/pages/place_details_view.dart';
 import 'package:mad_test_work/src/camera_feature/presentation/pages/places_list_view.dart';
+import 'package:mad_test_work/src/error_page.dart';
 import 'package:mad_test_work/src/free_space/free_space_controller.dart';
 import 'package:mad_test_work/src/free_space/free_space_service.dart';
+import 'package:mad_test_work/src/main_page.dart';
 import 'package:provider/provider.dart';
-
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_item_list_view.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
       theme: ThemeData.light(),
-      initialRoute: PlacesListView.routeName,
+      initialRoute: MainPageView.routeName,
       onGenerateRoute: (RouteSettings routeSettings) {
         return MaterialPageRoute<void>(
           settings: routeSettings,
@@ -90,11 +90,19 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 );
-              case SampleItemDetailsView.routeName:
-                return const SampleItemDetailsView();
-              case SampleItemListView.routeName:
+              case PlaceDetailsView.routeName:
+                if (routeSettings.arguments is! PageDetailsViewArgs) {
+                  return const ErrorPageView();
+                }
+                final args = routeSettings.arguments as PageDetailsViewArgs;
+                return PlaceDetailsView(
+                  place: args.place,
+                  mockSchemeName: args.mockSchemeName,
+                );
+              case MainPageView.routeName:
+                return const MainPageView();
               default:
-                return const SampleItemListView();
+                return const ErrorPageView();
             }
           },
         );
