@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mad_test_work/core/extensions/string_exttensions.dart';
 import 'package:mad_test_work/src/camera_feature/presentation/bloc/places_list_bloc.dart';
+import 'package:mad_test_work/src/camera_feature/presentation/widgets/places_list_tile_widget.dart';
 import 'package:mad_test_work/src/free_space/free_space_controller.dart';
 
 class PlacesListView extends StatelessWidget {
@@ -36,19 +37,18 @@ class PlacesListView extends StatelessWidget {
               Loading() => const Center(child: CircularProgressIndicator()),
               Loaded() => ListView.builder(
                   itemCount: state.places.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(state.places[index].title),
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ), 
-                      onTap: () {
-                        // Navigator.of(context).pushNamed(
-                        //     SampleItemDetailsView.routeName,
-                        //     arguments: index);
-                      },
-                    );
-                  })
+                  itemBuilder: (context, index) => PlacesListTileWidget(
+                    place: state.places[index],
+                    freeSpaceNotifier: freeSpaceController,
+                  ),
+                ),
+              Filtered() => ListView.builder(
+                  itemCount: state.filteredPlaces.length,
+                  itemBuilder: (context, index) => PlacesListTileWidget(
+                    place: state.filteredPlaces[index],
+                    freeSpaceNotifier: freeSpaceController,
+                  ),
+                ),
             };
           },
         ),

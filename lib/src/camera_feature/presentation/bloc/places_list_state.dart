@@ -19,12 +19,25 @@ final class Loading extends PlacesListState {
 final class Loaded extends PlacesListState {
   final List<Place> places;
 
-  Loaded(
-    {required this.places}
-  );
+  Loaded({
+    required this.places,
+  });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [places];
+}
+
+final class Filtered extends PlacesListState {
+  final List<Place> places;
+  final List<Place> filteredPlaces;
+
+  Filtered({
+    required this.places,
+    this.filteredPlaces = const [],
+  });
+
+  @override
+  List<Object?> get props => [places,filteredPlaces];
 }
 
 final class Error extends PlacesListState {
@@ -33,5 +46,5 @@ final class Error extends PlacesListState {
   Error({required this.message});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [message];
 }

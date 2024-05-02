@@ -39,19 +39,31 @@ class PlacesListBloc extends Bloc<PlacesListEvent, PlacesListState> {
     emitter(Loading());
     final failureOrPlaces = await getPlacesUseCase.getPlaces();
     final state = failureOrPlaces.fold(
-        (places) => Loaded(places:places.map((e) => e.place).toList()),
+        (places) => Loaded(places: places.map((e) => e.place).toList()),
         (failure) => Error(message: SERVER_FAILURE_MESSAGE));
     emitter(state);
   }
 
   Future<void> filterPlaces(
       FilterPlaces event, Emitter<PlacesListState> emitter) async {
-    if (state is Loaded) {
+    if (state is Loaded || state is Filtered) {
+      final allPlaces = state is Loaded
+          ? (state as Loaded).places
+          : (state as Filtered).places;
+      if (event.filterString == '') {
+        emitter(Loaded(
+          places: allPlaces,
+        ));
+      }
+
       final sortedPlaces = placeNameFilter.filteredPlaces(
-        (state as Loaded).places,
+        allPlaces,
         event.filterString,
       );
-      emitter(Loaded(places: sortedPlaces));
+      emitter(Filtered(
+        places: allPlaces,
+        filteredPlaces: sortedPlaces,
+      ));
     }
   }
 }
